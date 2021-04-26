@@ -15,6 +15,10 @@ public class EconomyPackage {
 		this.car=car;
 		this.priceperday=priceperday;
 	}
+	 public int  Getprice()
+	   {
+		   return price;
+	   }
 	
 	public void CalculatePrice(Travelinformation t)
 	{
