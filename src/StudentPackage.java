@@ -2,6 +2,7 @@
 public class StudentPackage extends EconomyPackage {
 	private int discount;
 	
+	
 	public  StudentPackage(int price,int hotelstars,boolean car , int priceperday,int discount) 
 	{
 		super(price,hotelstars,car,priceperday);
@@ -13,7 +14,12 @@ public class StudentPackage extends EconomyPackage {
 		int totalprice;
 		int totalpricewd;
 		totalpricewd =Getprice()*(t.getNumber())*(t.getDays());
-		totalprice=totalpricewd-totalpricewd*(discount/100);
+		if (Getcar()==true)
+		{
+		totalprice=totalpricewd-totalpricewd*(discount/100) + Getpricecar();
+		}
+		else 
+			totalprice=totalpricewd-totalpricewd*(discount/100);
 		
 	}
 

@@ -6,7 +6,7 @@ public class EconomyPackage {
 	private int hotelstars;
 	private boolean car;
 	private int priceperday;
-	 private int pricecar= 20;// for car//
+	protected int pricecar= 20;// for car//
 	
 	
 	public  EconomyPackage(int price,int hotelstars,boolean car , int priceperday) 
@@ -30,7 +30,13 @@ public class EconomyPackage {
 		else {totalprice =Getprice()*(t.getNumber())*(t.getDays());
 				}
 	}
-		
-	
+		public int Getpricecar() {
+			return pricecar;
+		}
+	   
+		public boolean Getcar()
+		{
+			return car;
+		}
 	
 }
