@@ -1,9 +1,13 @@
 
 
-	import java.awt.event.ActionEvent;
+	import java.awt.Color;
+import java.awt.Component;
+import java.awt.event.ActionEvent;
 	import java.awt.event.ActionListener;
 
-	import javax.swing.DefaultListModel;
+import javax.swing.BorderFactory;
+import javax.swing.BoxLayout;
+import javax.swing.DefaultListModel;
 	import javax.swing.JButton;
 	import javax.swing.JFrame;
 	import javax.swing.JLabel;
@@ -17,14 +21,16 @@
 	import java.util.*;
 
 	public class GUI extends JFrame {
-	   private JPanel panel,Panel2,Panel3,Panel4;
-	   private JFrame frame ,Frame2,Frame3,Frame4;
-		 private JLabel unsuccess,name,sg_friends,lastname,phonenumber;
+	   private JPanel panel,panel2,Panel3,Panel4,paneldestination;
+	   private JFrame frame ,frame2,Frame3,Frame4, framedestination;
+		 private JLabel unsuccess,name,sg_friends,lastname,phonenumber,destinationlabel;
 		private  JTextField userText,nameText,lastnameText,phonenumberText;
 		private  JButton next_button,infection_button,back_login_button1,BackLoginButton,back_login_button2,post_button;
 		private JTextArea textArea_name,textArea_Email,textArea_covid,postText,postfriends, Sg_friends;
 		private String post;
 		private User User;
+		private JList listView;
+		private DefaultListModel model;
 		private  ArrayList<User> Allusers = new ArrayList<>(); 
 		
 		public GUI()
@@ -72,18 +78,14 @@
 				next_button.setBounds(180,320,130,25);
 				panel.add(next_button);
 				frame.setVisible(true);
-				/*	
+					
 			
-	  //Δημιουργία  κουμπιού το οποίο θα εμφανίσει το παράθυρο με τα πιθανά κρούσματα 	
-				infection_button = new JButton("Show Potential Infections");
-				infection_button.setBounds(80,79,180,25);
-				panel.add(infection_button);
-				
+	  //Δημιουργία  κουμπιού το οποίο θα εμφανίσει επομενο παραθυρο  	
 				ButtonListener listener = new ButtonListener();
-				user_page_button.addActionListener(listener);
-
-		        ButtonListener3 listener3 = new ButtonListener3();
-		        infection_button.addActionListener(listener3);
+				next_button.addActionListener(listener);
+				
+				
+				
 		       
 		       
 			 
@@ -94,7 +96,60 @@
 
 	        @Override
 	        public void actionPerformed(ActionEvent arg0) {
-	            String name = userText.getText();
+	            String name = nameText.getText();
+	            String lastname = lastnameText.getText();
+	          
+	           long phonenumber = Integer.parseInt(phonenumberText.getText());
+	           User user = new User(name,lastname,phonenumber);
+	           frame2 = new JFrame();
+	           panel2= new JPanel();
+	           paneldestination= new JPanel();
+				 
+				 listView = new JList<String>();
+				 model = new DefaultListModel<String>();
+				 
+				 
+				 model.addElement("Αθήνα");
+					model.addElement("Πάτρα");
+					model.addElement("Ρόδος");
+					model.addElement("Κρήτη");
+					
+					listView.setModel(model);
+					destinationlabel = new JLabel("Προορισμός");
+					paneldestination.setLayout(new BoxLayout(paneldestination, BoxLayout.Y_AXIS));
+					paneldestination.setAlignmentX(Component.CENTER_ALIGNMENT);
+					paneldestination.add(destinationlabel);
+					paneldestination.add(listView);
+					panel2.add(paneldestination);
+					paneldestination.setBorder(BorderFactory.createLineBorder(Color.black));
+					panel2.add(paneldestination);
+					frame2.setContentPane(panel2);
+					 frame2.setVisible(true);
+				frame2.setSize(350,320);
+				frame2.setLocation(200, 0);
+				frame2.setTitle("Μενού Προορισμού/Ημερομηνία");
+				frame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			     
+				
+				
+				
+				 
+				
+				
+				
+				
+			
+				
+				
+				
+				
+				
+				
+	           
+	        }
+		}
+	}
+	           /*
 	          
 	            boolean flag = true;
 	              //Έλεγχος αν το ονομα του χρήστη είναι έγκυρο
@@ -246,6 +301,7 @@
 
 	        }
 	    }
+
 		//κλάση ανταπόκρισης του κουμπιού -ΟΚ-
 		class ButtonListener2 implements ActionListener {
 
@@ -342,7 +398,7 @@
 	   
 	   
 	     */
-	}
-	}
+	
+	
 	
 

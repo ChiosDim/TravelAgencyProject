@@ -12,7 +12,9 @@ public class User {
     	this.lastname=lastname;
     	this.phonenumber=phonenumber;
     }
-    
+    public void print() {
+    	System.out.println(name+lastname+phonenumber);
+    }
     
 	
 	
