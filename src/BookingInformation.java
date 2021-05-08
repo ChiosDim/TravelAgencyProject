@@ -2,14 +2,14 @@
 public class BookingInformation {
   
 	 private User user;
-	 private Travelinformation  TI;
-	 private EconomyPackage   apackage;
+	 private Travelinformation travelInfo;
+	 private EconomyPackage  apackage;
 	 
 	 
-	 public BookingInformation ( User user ,Travelinformation  TI ,EconomyPackage   apackage)
+	 public BookingInformation ( User user ,Travelinformation  travelInfo ,EconomyPackage   apackage)
 	 {
 		 this.user=user;
-		 this.TI=TI;
+		 this. travelInfo= travelInfo;
 		 this.apackage=apackage;
 	 }
 	 
