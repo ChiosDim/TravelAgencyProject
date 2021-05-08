@@ -15,9 +15,9 @@ public Travelinformation(String  destination, int daysofstay, String arrivaldate
 	this.numberofpeople=numberofpeople;
 }
 
-public boolean  ValidDate(int daysofstay) {
+public boolean  ValidDate() {
 	boolean flag=false;
-	if(daysofstay>7) {
+	if(daysofstay<7&&daysofstay>0) {
 		flag=true;
 	
 	}
@@ -30,6 +30,10 @@ public boolean  ValidDate(int daysofstay) {
    public int   getDays()
    {
 	   return  daysofstay;
+	   
    }
+   public void printinfo(){
+   System.out.println( destination+daysofstay+arrivaldate+numberofpeople);
+    }
 }
  

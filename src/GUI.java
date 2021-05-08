@@ -26,9 +26,9 @@ import javax.swing.JPanel;
 	public class GUI extends JFrame {
 	   private JPanel panel,panel2,Panel3,Panel4,paneldestination,panel3;
 	   private JFrame frame ,frame2,Frame3,Frame4, framedestination,frame3;
-		 private JLabel unsuccess,name,sg_friends,lastname,phonenumber,destinationlabel,numberofpeoplelabel,arrivaldatelabel,daysofstaylebel;
-		private  JTextField userText,nameText,lastnameText,phonenumberText,numberofpeopletext,arrivaldatetext,daysofstaylebeltext;
-		private  JButton next_button,infection_button,back_login_button1,BackLoginButton,back_login_button2,post_button,next_button_2;
+		 private JLabel unsuccess,name,sg_friends,lastname,phonenumber,destinationlabel,numberofpeoplelabel,arrivaldatelabel,daysofstaylabel;
+		private  JTextField userText,nameText,lastnameText,phonenumberText,numberofpeopletext,arrivaldatetext,daysofstaytext;
+		private  JButton next_button,post_button,next_button_2,next_button_3;
 		private JTextArea textArea_name,textArea_Email,textArea_covid,postText,postfriends, Sg_friends, line;
 		private String post;
 		private User User;
@@ -148,6 +148,7 @@ import javax.swing.JPanel;
 				frame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				frame2.setVisible(true);
 				
+			
 				
 				ButtonListener2 listener2 = new ButtonListener2();
 				next_button_2.addActionListener(listener2);
@@ -208,17 +209,23 @@ import javax.swing.JPanel;
 					panel3.setLayout(null);
 					
 					
-					daysofstaylebel = new JLabel("Ημέρες διαμονής:");
-					daysofstaylebel.setBounds(20,100,165,25);
-	     			panel3.add(daysofstaylebel);
-	     			daysofstaylebeltext =new JTextField("Please enter the days of stay..");
-	     			daysofstaylebeltext.setBounds(130,100,190,25);
-					panel3.add(daysofstaylebeltext);
+					daysofstaylabel = new JLabel("Ημέρες διαμονής:");
+					daysofstaylabel.setBounds(50,200,225,25);
+	     			panel3.add(daysofstaylabel);
+	     			daysofstaytext =new JTextField("Please enter the days of stay..");
+	     			daysofstaytext.setBounds(50,230,200,25);
+					panel3.add(daysofstaytext);
 	
 					
 					
 	                                   
 					frame3.setVisible(true);
+					next_button_3 = new JButton("Συνέχεια");
+					next_button_3.setBounds(180,320,130,25);
+					panel3.add(next_button_3);
+					
+					ButtonListener3 listener3 = new ButtonListener3();
+					next_button_3.addActionListener(listener3);
 					
 		  			}
 		  			
@@ -233,64 +240,36 @@ import javax.swing.JPanel;
 				
 	  		
 	}
-	}
+	
 	  		
 	  		
 	  		
 	  		
-/*
+
 	//κλάση ανταπόκρισης του κουμπιού -infection_button-
 		class ButtonListener3 implements ActionListener {
 
 	        @Override
 	        public void actionPerformed(ActionEvent e) {
-	        	ArrayList<User> covidfr = new ArrayList<>();
-	            String name = userText.getText();
-
-	       for(User user :Allusers) {
-	                if(name.equals(user.Name)) {
-	                	covidfr = user.detect_virus();
-
-	 //Δημιουργία πλαίσιο κειμένου με τους χρήστες που πιθανόν να έχουν μολυνθεί
-	                    Panel3= new JPanel();
-	                    Frame3 = new JFrame();
-	                    Frame3.setSize(471,299);
-	                    Frame3.setTitle("Πιθανή Μετάδοση Ιού");
-	                    Frame3.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-	                    Frame3.add(Panel3);
-	                    Panel3.setLayout(null);
-
-	                     textArea_covid = new JTextArea();
-	                    textArea_covid.setBounds(11, 4, 431, 189);
-	                    textArea_covid.append("****************************************************************************"+"\n"
-	                                   +name+ " has been inflected. The following users have to been tested"+"\n"
-	                                   +"****************************************************************************"+"\n");
-	                    for(User friends :covidfr) {
-	                    	textArea_covid.append(friends.Name+"\n");
-	                    }
-	                    textArea_covid.setEditable(false);
-	                    Panel3.add(textArea_covid);
-
-	                    
-
-	                    Frame3.setVisible(true);
-	                    
-	                    
-	                  //Δήμιουργια κουμπιου το οποίο στελνει τον χρηστη στο αρχικό παράθυρο
-	                    BackLoginButton = new JButton("Back to Login Screen");
-	                    BackLoginButton.setBounds(119, 197, 197, 22);
-	                    Panel3.add(BackLoginButton);
-
-	                    ButtonListener4 listener4 = new ButtonListener4();
-	                    BackLoginButton.addActionListener(listener4);
-	                    
+	        	int daysofstay = Integer.parseInt(daysofstaytext.getText());
+	        	String arrivaldate = arrivaldatetext.getText();
+	        	int numberofpeo = Integer.parseInt(numberofpeopletext.getText());
+	        	Travelinformation travelinformation = new Travelinformation(Selecteddestination,daysofstay,arrivaldate,numberofpeo );	
+	        	if( travelinformation.ValidDate()) {
+	        		
+	        	}
+	        	else {
+	        		JOptionPane.showMessageDialog(null, "No valid days of stay(1-7)");
+	        	}
+	        	
+	            
 	                }
 	            }
-	        }
+	        
+	    
 	    }
 		
-		 
+		/*
 		//κλάση ανταπόκρισης του κουμπιού -BackLoginButton-
 	    class ButtonListener4 implements ActionListener {
 
