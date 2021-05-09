@@ -254,7 +254,8 @@ import javax.swing.JPanel;
 	        	int daysofstay = Integer.parseInt(daysofstaytext.getText());
 	        	String arrivaldate = arrivaldatetext.getText();
 	        	int numberofpeo = Integer.parseInt(numberofpeopletext.getText());
-	        	Travelinformation travelinformation = new Travelinformation(Selecteddestination,daysofstay,arrivaldate,numberofpeo );	
+	        	Travelinformation travelinformation = new Travelinformation(Selecteddestination,daysofstay,arrivaldate,numberofpeo );
+	        	travelinformation.DestinationPrice();
 	        	if( travelinformation.ValidDate()) {
 	        		travelinformation.GetdestinationPrice();
 	        		frame3.setVisible(false);
