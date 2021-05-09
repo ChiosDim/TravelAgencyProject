@@ -5,6 +5,7 @@ private  String destination;
 private   int daysofstay;
 private   String arrivaldate;
 private   int numberofpeople;
+private   int destinationPrice;
 
 
 public Travelinformation(String  destination, int daysofstay, String arrivaldate,int numberofpeople)
@@ -17,7 +18,7 @@ public Travelinformation(String  destination, int daysofstay, String arrivaldate
 
 public boolean  ValidDate() {
 	boolean flag=false;
-	if(daysofstay<7&&daysofstay>0) {
+	if(daysofstay<=7&&daysofstay>0) {
 		flag=true;
 	
 	}
@@ -35,5 +36,22 @@ public boolean  ValidDate() {
    public void printinfo(){
    System.out.println( destination+daysofstay+arrivaldate+numberofpeople);
     }
+   public void DestinationPrice() {
+	    //destinationprice=5;
+	   if(destination.equals("Αθήνα(50 ευρώ)"))
+		   this.destinationPrice=50;
+	   else if (destination.equals("Πάτρα(60 ευρώ)"))
+			   this.destinationPrice=60;
+	   else if (destination.equals("Ρόδος(80 ευρώ)"))
+			   this.destinationPrice=80;
+	   else if (destination.equals("Κρήτη(100 ευρώ)"))
+		   this.destinationPrice=100;
+   }
+   public int GetdestinationPrice()
+   {
+	   System.out.println(destinationPrice);
+	   return destinationPrice;
+	   
+   }
 }
  

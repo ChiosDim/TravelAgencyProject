@@ -9,12 +9,12 @@ public class EconomyPackage {
 	protected int pricecar= 20;// for car//
 	
 	
-	public  EconomyPackage(int price,int hotelstars,boolean car , int priceperday) 
+	public  EconomyPackage(int price,int hotelstars ) 
 	{
 		this.price=price;
 		this.hotelstars=hotelstars;
-		this.car=car;
-		this.priceperday=priceperday;
+		
+		
 		
 	}
 	 public int  Getprice()
@@ -26,8 +26,8 @@ public class EconomyPackage {
 	{
 		int totalprice;
 		if(car==true) {
-		totalprice = price *(t.getNumber())*(t.getDays())+(pricecar*t.getDays());}
-		else {totalprice =Getprice()*(t.getNumber())*(t.getDays());
+		totalprice = price *(t.getNumber())*(t.getDays())+(pricecar*t.getDays()+ t.GetdestinationPrice());}
+		else {totalprice =Getprice()*(t.getNumber())*(t.getDays()+ t.GetdestinationPrice());
 				}
 	}
 		public int Getpricecar() {

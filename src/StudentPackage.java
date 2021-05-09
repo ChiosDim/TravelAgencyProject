@@ -3,9 +3,9 @@ public class StudentPackage extends EconomyPackage {
 	private int discount;
 	
 	
-	public  StudentPackage(int price,int hotelstars,boolean car , int priceperday,int discount) 
+	public  StudentPackage(int price,int hotelstars  ,int discount) 
 	{
-		super(price,hotelstars,car,priceperday);
+		super(price,hotelstars );
 		this.discount=discount;
 	}
 	
@@ -16,10 +16,10 @@ public class StudentPackage extends EconomyPackage {
 		totalpricewd =Getprice()*(t.getNumber())*(t.getDays());
 		if (Getcar()==true)
 		{
-		totalprice=totalpricewd-totalpricewd*(discount/100) + Getpricecar();
+		totalprice=totalpricewd-totalpricewd*(discount/100) + Getpricecar() + t.GetdestinationPrice();
 		}
 		else 
-			totalprice=totalpricewd-totalpricewd*(discount/100);
+			totalprice=totalpricewd-totalpricewd*(discount/100)+ t.GetdestinationPrice();
 		
 	}
 

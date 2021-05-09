@@ -24,23 +24,24 @@ import javax.swing.JPanel;
 	import java.util.*;
 
 	public class GUI extends JFrame {
-	   private JPanel panel,panel2,Panel3,Panel4,paneldestination,panel3;
-	   private JFrame frame ,frame2,Frame3,Frame4, framedestination,frame3;
-		 private JLabel unsuccess,name,sg_friends,lastname,phonenumber,destinationlabel,numberofpeoplelabel,arrivaldatelabel,daysofstaylabel;
+	   private JPanel panel,panel2,Panel3,Panel4,paneldestination,panel3,panel4,panelpackage;
+	   private JFrame frame ,frame2,Frame3,Frame4, framedestination,frame3,frame4;
+	
+		 private JLabel unsuccess,name,sg_friends,lastname,phonenumber,destinationlabel,numberofpeoplelabel,arrivaldatelabel,daysofstaylabel,Packages,packagelabel;
 		private  JTextField userText,nameText,lastnameText,phonenumberText,numberofpeopletext,arrivaldatetext,daysofstaytext;
-		private  JButton next_button,post_button,next_button_2,next_button_3;
+		private  JButton next_button,post_button,next_button_2,next_button_3,next_button_4,back_button;
 		private JTextArea textArea_name,textArea_Email,textArea_covid,postText,postfriends, Sg_friends, line;
 		private String post;
 		private User User;
-		private JList<String> listView;
-		private DefaultListModel model;
+		private JList<String> listView, listView2;
+		private DefaultListModel model,model2;
 		private  ArrayList<User> Allusers = new ArrayList<>(); 
 		private String Selecteddestination;
-		
-		public GUI()
+		 ArrayList<EconomyPackage> packages = new ArrayList<EconomyPackage>();
+		public GUI( ArrayList<EconomyPackage> packages)
 		 {
 			 
-			 
+			 this.packages=packages;
 			
 		        
 	   //Δημιουργία αρχικού παραθύρου  
@@ -124,7 +125,6 @@ import javax.swing.JPanel;
 					
 					paneldestination.add(destinationlabel);
 					paneldestination.add(listView);
-					panel2.add(paneldestination);
 					paneldestination.setBorder(BorderFactory.createLineBorder(Color.black));
 					panel2.add(paneldestination);
 					frame2.setContentPane(panel2);
@@ -256,6 +256,59 @@ import javax.swing.JPanel;
 	        	int numberofpeo = Integer.parseInt(numberofpeopletext.getText());
 	        	Travelinformation travelinformation = new Travelinformation(Selecteddestination,daysofstay,arrivaldate,numberofpeo );	
 	        	if( travelinformation.ValidDate()) {
+	        		travelinformation.GetdestinationPrice();
+	        		frame3.setVisible(false);
+	        		panel4= new JPanel();
+					 frame4 = new JFrame();
+
+						frame4.setSize(250,250);
+					     frame4.add(panel4);		
+		     			 listView2 = new JList<String>();
+						 model2 = new DefaultListModel<String>();
+						 panelpackage= new JPanel();
+						 
+						 
+						 
+						
+						 
+						 
+						 
+						    model2.addElement("Φοιτητικό(20 ευρώ/ημέρα)");
+							model2.addElement("Οικονομικό(30 ευρώ/ημέρα)");
+							model2.addElement("Κανονικό(50 ευρώ/ημέρα)");
+							model2.addElement("Πολυτελείας(100 ευρώ/ημέρα)");
+							
+							listView2.setModel(model2);
+							packagelabel = new JLabel("Eπιλογή πακέτου διαμονής:");
+							
+							
+							panelpackage.add(packagelabel);
+							panelpackage.add(listView2);
+							panelpackage.setBorder(BorderFactory.createLineBorder(Color.black));
+							panel4.add(panelpackage);
+							frame4.setContentPane(panel4);
+							panelpackage.setLayout(new BoxLayout(panelpackage, BoxLayout.Y_AXIS));
+							
+							
+							frame4.setTitle("Mενού Πακέτων Διαμονής");
+							frame4.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);	
+							back_button = new JButton("Πίσω");
+							back_button.setBounds(180,320,130,25);
+							panel4.add(back_button);
+							
+							next_button_4 = new JButton("Συνέχεια");
+							next_button_4.setBounds(180,320,130,25);
+							panel4.add(next_button_4);
+							
+							
+							
+							
+							
+							
+							frame4.setVisible(true);
+							
+							
+						
 	        		
 	        	}
 	        	else {
@@ -275,11 +328,12 @@ import javax.swing.JPanel;
 
 	        @Override
 	        public void actionPerformed(ActionEvent e) {
-	            Frame3.setVisible(false);
+	           Frame4.setVisible(false);
+	            
 	        }
 	    }
 	    
-	    
+	    /*
 	  //κλάση ανταπόκρισης του κουμπιού -back_login_button2-
 	    class ButtonListener5 implements ActionListener {
 
