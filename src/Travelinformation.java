@@ -49,9 +49,10 @@ public boolean  ValidDate() {
    }
    public int GetdestinationPrice()
    {
-	   System.out.println(destinationPrice);
+	   System.out.println(destinationPrice+daysofstay);
 	   return destinationPrice;
 	   
    }
+  
 }
  

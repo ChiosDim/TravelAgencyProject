@@ -24,20 +24,21 @@ import javax.swing.JPanel;
 	import java.util.*;
 
 	public class GUI extends JFrame {
-	   private JPanel panel,panel2,Panel3,Panel4,paneldestination,panel3,panel4,panelpackage;
-	   private JFrame frame ,frame2,Frame3,Frame4, framedestination,frame3,frame4;
+	   private JPanel panel,panel2,Panel3,Panel4,paneldestination,panel3,panel4,panelpackage,panel5,carpanel;
+	   private JFrame frame ,frame2,Frame3,Frame4, framedestination,frame3,frame4,frame5;
 	
-		 private JLabel unsuccess,name,sg_friends,lastname,phonenumber,destinationlabel,numberofpeoplelabel,arrivaldatelabel,daysofstaylabel,Packages,packagelabel;
+		 private JLabel name,lastname,phonenumber,destinationlabel,numberofpeoplelabel,arrivaldatelabel,daysofstaylabel,Packages,packagelabel,carlabel;
 		private  JTextField userText,nameText,lastnameText,phonenumberText,numberofpeopletext,arrivaldatetext,daysofstaytext;
-		private  JButton next_button,post_button,next_button_2,next_button_3,next_button_4,back_button;
-		private JTextArea textArea_name,textArea_Email,textArea_covid,postText,postfriends, Sg_friends, line;
+		private  JButton next_button,post_button,next_button_2,next_button_3,next_button_4,back_button,next_button_5;
+		private JTextArea textArea_name;
 		private String post;
 		private User User;
-		private JList<String> listView, listView2;
-		private DefaultListModel model,model2;
+		private JList<String> listView, listView2,listView3;
+		private DefaultListModel model,model2,model3;
 		private  ArrayList<User> Allusers = new ArrayList<>(); 
 		private String Selecteddestination;
-		 ArrayList<EconomyPackage> packages = new ArrayList<EconomyPackage>();
+		 ArrayList<EconomyPackage> packages = new ArrayList<>();
+		 private Travelinformation t;
 		public GUI( ArrayList<EconomyPackage> packages)
 		 {
 			 
@@ -255,6 +256,7 @@ import javax.swing.JPanel;
 	        	String arrivaldate = arrivaldatetext.getText();
 	        	int numberofpeo = Integer.parseInt(numberofpeopletext.getText());
 	        	Travelinformation travelinformation = new Travelinformation(Selecteddestination,daysofstay,arrivaldate,numberofpeo );
+	        	
 	        	travelinformation.DestinationPrice();
 	        	if( travelinformation.ValidDate()) {
 	        		travelinformation.GetdestinationPrice();
@@ -262,7 +264,7 @@ import javax.swing.JPanel;
 	        		panel4= new JPanel();
 					 frame4 = new JFrame();
 
-						frame4.setSize(250,250);
+						frame4.setSize(300,250);
 					     frame4.add(panel4);		
 		     			 listView2 = new JList<String>();
 						 model2 = new DefaultListModel<String>();
@@ -296,17 +298,20 @@ import javax.swing.JPanel;
 							back_button = new JButton("Πίσω");
 							back_button.setBounds(180,320,130,25);
 							panel4.add(back_button);
+							ButtonListener4 listener4 = new ButtonListener4();
+							back_button.addActionListener(listener4);
 							
 							next_button_4 = new JButton("Συνέχεια");
 							next_button_4.setBounds(180,320,130,25);
 							panel4.add(next_button_4);
+							ButtonListener5 listener5 = new ButtonListener5();
+							next_button_4.addActionListener(listener5);
 							
 							
 							
-							
-							
-							
+								
 							frame4.setVisible(true);
+							t=travelinformation;
 							
 							
 						
@@ -321,28 +326,68 @@ import javax.swing.JPanel;
 	            }
 	        
 	    
-	    }
+	    
 		
-		/*
+		
 		//κλάση ανταπόκρισης του κουμπιού -BackLoginButton-
 	    class ButtonListener4 implements ActionListener {
 
 	        @Override
 	        public void actionPerformed(ActionEvent e) {
-	           Frame4.setVisible(false);
+	        	frame4.setVisible(false);
+	        	frame3.setVisible(true);
 	            
 	        }
 	    }
+	
 	    
-	    /*
+	    
 	  //κλάση ανταπόκρισης του κουμπιού -back_login_button2-
 	    class ButtonListener5 implements ActionListener {
 
 	        @Override
 	        public void actionPerformed(ActionEvent e) {
-	            Frame4.setVisible(false);
+	            frame4.setVisible(false);
+	            panel5= new JPanel();
+	            carpanel= new JPanel();
+				 frame5 = new JFrame();
+				frame5.setSize(350,200);
+				frame5.setTitle("Μενού Ενοικίασης Αυτοκινήτου");
+				
+			     frame5.add(panel5);
+				
+				 listView3 = new JList<String>();
+				 model3 = new DefaultListModel<String>();
+				 
+				 
+				    model3.addElement("ΝΑΙ (20 ευρώ/ημέρα)");
+					model3.addElement("ΟΧΙ");
+					
+					
+					listView3.setModel(model3);
+					carlabel = new JLabel("Θα επιθυμούσατε να ενοικιάσετε αυτοκίνητο:");
+					
+					 carpanel.add(carlabel);
+					 carpanel.add(listView3);
+					 carpanel.setBorder(BorderFactory.createLineBorder(Color.black));
+					panel5.add(carpanel);
+					carpanel.setLayout(new BoxLayout(carpanel, BoxLayout.Y_AXIS));
+					next_button_5 = new JButton("Συνέχεια");
+					
+					frame5.setContentPane(panel5);
+					panel5.add(next_button_5);
+					ButtonListener6 listener6 = new ButtonListener6();
+					next_button_5.addActionListener(listener6);
+					
+					
+     			frame5.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+     			frame5.setVisible(true);
+	            
+	            
 	        }
 	    }
+	
+	    
 	    
 	    
 	    
@@ -351,15 +396,49 @@ import javax.swing.JPanel;
 
 	        @Override
 	        public void actionPerformed(ActionEvent e) {
+	        	String selectedpackage = listView2.getSelectedValue();
+	        	String selectedcar = listView3.getSelectedValue();
 	        	
-	        	 post = postText.getText();
-	        	 //Γίνεται αντικείμενο το πόστ του χρήστη 
-	 			Post pst = new Post(post,User);
-	        }
-	    }
+	        	EconomyPackage  Package = null;
+	        	
+	        		for(EconomyPackage P: packages ) {
+	        			
+	        			
+	        		if(selectedpackage.equals("Φοιτητικό(20 ευρώ/ημέρα)")&& packages.get(0).equals(P)) {
+	        			Package=P;
+	        			
+	        		}
+	        		if(selectedpackage.equals("Οικονομικό(30 ευρώ/ημέρα)")&& packages.get(1).equals(P)) {
+	        			Package=P;
+	        			
+	        		}
+	        		if(selectedpackage.equals("Κανονικό(50 ευρώ/ημέρα)")&& packages.get(2).equals(P)) {
+	        			Package=P;
+	        			
+	        		}
+	        		if(selectedpackage.equals("Πολυτελείας(100 ευρώ/ημέρα)")&& packages.get(3).equals(P)) {
+	        			Package=P;
+	        			
+	        		}
+	        		
+	        		
+	        		}
+	        		Package.Car(selectedcar);
+	        		Package.CalculatePrice( t);
+	        		
+	        
+	        	
+	        	
+	        		}
+	       }
+	}
+	
+	
+	
+	    
 	   
 	   
-	     */
+	     
 	
 	
 	

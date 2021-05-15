@@ -1,11 +1,11 @@
 
 public class EconomyPackage {
 
-	
-	private int price;
-	private int hotelstars;
-	private boolean car;
-	private int priceperday;
+	protected double Totalprice;
+	protected int price;
+	protected int hotelstars;
+	protected boolean car=false;
+	protected int priceperday;
 	protected int pricecar= 20;// for car//
 	
 	
@@ -25,10 +25,13 @@ public class EconomyPackage {
 	public void CalculatePrice(Travelinformation t)
 	{
 		int totalprice;
+		
 		if(car==true) {
 		totalprice = price *(t.getNumber())*(t.getDays())+(pricecar*t.getDays()+ t.GetdestinationPrice());}
 		else {totalprice =Getprice()*(t.getNumber())*(t.getDays()+ t.GetdestinationPrice());
 				}
+		Totalprice=totalprice;
+		
 	}
 		public int Getpricecar() {
 			return pricecar;
@@ -38,5 +41,20 @@ public class EconomyPackage {
 		{
 			return car;
 		}
+		public double Gettotalprice() {
+			return Totalprice;
+		}
+		
+		public void Car(String c)
+		{
+			
+			if(c.equals("ΝΑΙ (20 ευρώ/ημέρα)"))
+			{car=true;
+			}
+			
+		}
+		
+		
+		
 	
 }
