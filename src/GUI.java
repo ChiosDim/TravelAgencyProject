@@ -24,13 +24,13 @@ import javax.swing.JPanel;
 	import java.util.*;
 
 	public class GUI extends JFrame {
-	   private JPanel panel,panel2,Panel3,Panel4,paneldestination,panel3,panel4,panelpackage,panel5,carpanel;
-	   private JFrame frame ,frame2,Frame3,Frame4, framedestination,frame3,frame4,frame5;
+	   private JPanel panel,panel2,Panel3,Panel4,paneldestination,panel3,panel4,panelpackage,panel5,carpanel,panel6;
+	   private JFrame frame ,frame2,Frame3,Frame4, framedestination,frame3,frame4,frame5,frame6;
 	
-		 private JLabel name,lastname,phonenumber,destinationlabel,numberofpeoplelabel,arrivaldatelabel,daysofstaylabel,Packages,packagelabel,carlabel;
+		 private JLabel name,lastname,phonenumber,destinationlabel,numberofpeoplelabel,arrivaldatelabel,daysofstaylabel,Packages,packagelabel,carlabel,prizelabel;
 		private  JTextField userText,nameText,lastnameText,phonenumberText,numberofpeopletext,arrivaldatetext,daysofstaytext;
 		private  JButton next_button,post_button,next_button_2,next_button_3,next_button_4,back_button,next_button_5;
-		private JTextArea textArea_name;
+		private JTextArea textArea_price;
 		private String post;
 		private User User;
 		private JList<String> listView, listView2,listView3;
@@ -421,16 +421,43 @@ import javax.swing.JPanel;
 	        			
 	        		}
 	        		
-	        		
+	        		 
 	        		}
 	        		Package.Car(selectedcar);
-	        		Package.CalculatePrice( t);
+	        		Package.CalculatePrice(t);
+	        		frame5.setVisible(false);
+	 	            panel6= new JPanel();
+	 				 frame6 = new JFrame();
+	 				frame6.setSize(350,350);
+	 				frame6.setTitle("Tελικό ποσό κράτησης");
+	 				prizelabel = new JLabel("Τελικό ποσό πληρωμής:");
+	 				textArea_price = new JTextArea();
+                    textArea_price.setBounds(11, 4, 431, 189);
+                    textArea_price.append(String.valueOf(Package.Gettotalprice()));
+                    System.out.println(Package.Gettotalprice());
+                    
+                    textArea_price.setEditable(false);
+	 				
+                    frame6.add(panel6);
+                    panel6.add(prizelabel);
+                    panel6.add(textArea_price);
 	        		
+	        		
+                    frame6.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                     frame6.setVisible(true);
 	        
 	        	
 	        	
 	        		}
 	       }
+	    class ButtonListener7 implements ActionListener {
+
+	        @Override
+	        public void actionPerformed(ActionEvent e) {
+	           
+				
+	        }
+	    }
 	}
 	
 	

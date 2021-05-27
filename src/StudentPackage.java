@@ -13,7 +13,7 @@ public class StudentPackage extends EconomyPackage {
 	public void CalculatePrice(Travelinformation t)
 	{
 		double totalprice;
-		int totalpricewd;
+		double totalpricewd;
 		totalpricewd =Getprice()*(t.getNumber())*(t.getDays());
 		if (Getcar()==true)
 		{
@@ -24,6 +24,7 @@ public class StudentPackage extends EconomyPackage {
 		
 		Totalprice=totalprice;
 		System.out.println(totalprice);
+		
 		
 		
 	}

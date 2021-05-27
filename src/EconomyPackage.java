@@ -4,7 +4,7 @@ public class EconomyPackage {
 	protected double Totalprice;
 	protected int price;
 	protected int hotelstars;
-	protected boolean car=false;
+	protected boolean car;
 	protected int priceperday;
 	protected int pricecar= 20;// for car//
 	
@@ -24,13 +24,17 @@ public class EconomyPackage {
 	
 	public void CalculatePrice(Travelinformation t)
 	{
-		int totalprice;
+		double totalprice;
+		
 		
 		if(car==true) {
-		totalprice = price *(t.getNumber())*(t.getDays())+(pricecar*t.getDays()+ t.GetdestinationPrice());}
-		else {totalprice =Getprice()*(t.getNumber())*(t.getDays()+ t.GetdestinationPrice());
+	
+		totalprice = (price *(t.getNumber())*(t.getDays()))+((pricecar*t.getDays())+ t.GetdestinationPrice());}
+		else {totalprice = (price *(t.getNumber())*(t.getDays()))+ t.GetdestinationPrice();
 				}
+		
 		Totalprice=totalprice;
+	
 		
 	}
 		public int Getpricecar() {
