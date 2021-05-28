@@ -23,7 +23,7 @@ public class StudentPackage extends EconomyPackage {
 			totalprice=totalpricewd-(totalpricewd*(discount/100))+ t.GetdestinationPrice();}
 		
 		Totalprice=totalprice;
-		System.out.println(totalprice);
+		
 		
 		
 		

@@ -12,9 +12,18 @@ public class User {
     	this.lastname=lastname;
     	this.phonenumber=phonenumber;
     }
-    public void print() {
-    	System.out.println(name+lastname+phonenumber);
-    }
+    public String  Getname()
+	   {
+		   return name;
+	   }
+    public String  Getlastname()
+	   {
+		   return lastname;
+	   }
+    public long  Getphonenumber()
+	   {
+		   return phonenumber;
+	   }
     
 	
 	

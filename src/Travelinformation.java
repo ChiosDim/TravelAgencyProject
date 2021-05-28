@@ -28,14 +28,17 @@ public boolean  ValidDate() {
    {
 	   return numberofpeople;
    }
+   public String   getarrivaldate()
+   {
+	   return  arrivaldate;
+	   
+   }
    public int   getDays()
    {
 	   return  daysofstay;
 	   
    }
-   public void printinfo(){
-   System.out.println( destination+daysofstay+arrivaldate+numberofpeople);
-    }
+  
    public void DestinationPrice() {
 	    //destinationprice=5;
 	   if(destination.equals("Αθήνα(50 ευρώ)"))

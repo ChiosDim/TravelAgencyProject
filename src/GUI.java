@@ -24,21 +24,26 @@ import javax.swing.JPanel;
 	import java.util.*;
 
 	public class GUI extends JFrame {
-	   private JPanel panel,panel2,Panel3,Panel4,paneldestination,panel3,panel4,panelpackage,panel5,carpanel,panel6;
-	   private JFrame frame ,frame2,Frame3,Frame4, framedestination,frame3,frame4,frame5,frame6;
+	   private JPanel panel,panel2,Panel3,Panel4,paneldestination,panel3,panel4,panelpackage,panel5,carpanel,panel6,panel7;
+	   private JFrame frame ,frame2,Frame3,Frame4, framedestination,frame3,frame4,frame5,frame6,frame7;
 	
-		 private JLabel name,lastname,phonenumber,destinationlabel,numberofpeoplelabel,arrivaldatelabel,daysofstaylabel,Packages,packagelabel,carlabel,prizelabel;
+		 private JLabel name,lastname,phonenumber,destinationlabel,numberofpeoplelabel,arrivaldatelabel,daysofstaylabel,Packages,packagelabel,carlabel,prizelabel,datalabel,label;
 		private  JTextField userText,nameText,lastnameText,phonenumberText,numberofpeopletext,arrivaldatetext,daysofstaytext;
-		private  JButton next_button,post_button,next_button_2,next_button_3,next_button_4,back_button,next_button_5;
-		private JTextArea textArea_price;
-		private String post;
-		private User User;
+		private  JButton next_button,post_button,next_button_2,next_button_3,next_button_4,back_button,next_button_5, next_button_6,next_button_7,  next_button_8;
+		private JTextArea textArea_price,textArea_data;
+		
+		
 		private JList<String> listView, listView2,listView3;
 		private DefaultListModel model,model2,model3;
-		private  ArrayList<User> Allusers = new ArrayList<>(); 
+	
 		private String Selecteddestination;
+		private String Selectedpackage;
+		private String Selectedcar;
 		 ArrayList<EconomyPackage> packages = new ArrayList<>();
 		 private Travelinformation t;
+		 private User USER;
+		 private EconomyPackage PACKAGE;
+		 
 		public GUI( ArrayList<EconomyPackage> packages)
 		 {
 			 
@@ -108,6 +113,7 @@ import javax.swing.JPanel;
 	          
 	           long phonenumber = Integer.parseInt(phonenumberText.getText());
 	           User user = new User(name,lastname,phonenumber);
+	          USER=user;
 	           frame2 = new JFrame();
 	           panel2= new JPanel();
 	           paneldestination= new JPanel();
@@ -397,7 +403,9 @@ import javax.swing.JPanel;
 	        @Override
 	        public void actionPerformed(ActionEvent e) {
 	        	String selectedpackage = listView2.getSelectedValue();
+	        	Selectedpackage=selectedpackage;
 	        	String selectedcar = listView3.getSelectedValue();
+	        	Selectedcar=selectedcar;
 	        	
 	        	EconomyPackage  Package = null;
 	        	
@@ -423,29 +431,37 @@ import javax.swing.JPanel;
 	        		
 	        		 
 	        		}
+	        		
 	        		Package.Car(selectedcar);
 	        		Package.CalculatePrice(t);
+	        		PACKAGE=Package;
 	        		frame5.setVisible(false);
 	 	            panel6= new JPanel();
 	 				 frame6 = new JFrame();
-	 				frame6.setSize(350,350);
+	 				frame6.setSize(350,300);
 	 				frame6.setTitle("Tελικό ποσό κράτησης");
 	 				prizelabel = new JLabel("Τελικό ποσό πληρωμής:");
 	 				textArea_price = new JTextArea();
                     textArea_price.setBounds(11, 4, 431, 189);
-                    textArea_price.append(String.valueOf(Package.Gettotalprice()));
-                    System.out.println(Package.Gettotalprice());
+                    textArea_price.append(String.valueOf(Package.Gettotalprice())+"€");
+                   
                     
                     textArea_price.setEditable(false);
 	 				
                     frame6.add(panel6);
                     panel6.add(prizelabel);
                     panel6.add(textArea_price);
-	        		
-	        		
+                    next_button_7 = new JButton("Κράτηση");
+                    panel6.add(next_button_7);
+                   
                     frame6.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                     frame6.setVisible(true);
-	        
+                    frame6.setVisible(true);
+                    
+                     
+                    
+ 					ButtonListener7 listener7 = new ButtonListener7();
+ 					next_button_7.addActionListener(listener7);
+ 					
 	        	
 	        	
 	        		}
@@ -454,6 +470,52 @@ import javax.swing.JPanel;
 
 	        @Override
 	        public void actionPerformed(ActionEvent e) {
+	        	frame6.setVisible(false);
+	        	
+	        	
+	           BookingInformation bi= new  BookingInformation(USER,t,PACKAGE );
+	          
+	           panel7= new JPanel();
+				 frame7 = new JFrame();
+				frame7.setSize(400,400);
+				frame7.setTitle("Ολοκλήρωση κράτησεις");
+				frame7.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			     frame7.add(panel7);
+				panel7.setLayout(null);
+				
+		 
+			
+	  //Δημιουργία πλαίσιο κειμένου που θα εισάγουμε τα στοιχεια του χρηστη
+				label = new JLabel("Στοιχεία κράτησεις :");
+				label.setBounds(20,20,165,25);
+   			panel7.add(label);
+   			textArea_data = new JTextArea();
+            textArea_data.setBounds(150, 20, 200, 150);
+            textArea_data.append("Όνομα:"+ USER.Getname()+"\n"+"Επίθετο:"+ USER.Getlastname()+"\n"+"Τηλέφωνο:"+ USER.Getphonenumber()+"\n"+"Ημερομηνία:"+ t.getarrivaldate()+"\n"+"Πακέτο:"+Selectedpackage+"\n"+"Άτομα:"+t.getNumber()+"\n"+"Αυτοκίνητο:"+Selectedcar);
+            panel7.add(textArea_data);
+           
+            
+            textArea_data.setEditable(false);
+				
+			
+				frame7.setVisible(true);
+					
+				next_button_8 = new JButton("ΤΕΛΟΣ");
+                panel7.add(next_button_8);
+                next_button_8.setBounds(180,320,130,25);
+	  //Δημιουργία  κουμπιού το οποίο θα εμφανίσει επομενο παραθυρο  	
+				ButtonListener8 listener8 = new ButtonListener8();
+				next_button_8.addActionListener(listener8);
+				
+	           
+				
+	        }
+	    }
+	    class ButtonListener8 implements ActionListener {
+
+	        @Override
+	        public void actionPerformed(ActionEvent e) {
+	        	frame7.setVisible(false);
 	           
 				
 	        }
