@@ -24,12 +24,12 @@ import javax.swing.JPanel;
 	import java.util.*;
 
 	public class GUI extends JFrame {
-	   private JPanel panel,panel2,Panel3,Panel4,paneldestination,panel3,panel4,panelpackage,panel5,carpanel,panel6,panel7;
-	   private JFrame frame ,frame2,Frame3,Frame4, framedestination,frame3,frame4,frame5,frame6,frame7;
+	   private JPanel panel,panel2,Panel3,Panel4,paneldestination,panel3,panel4,panelpackage,panel5,carpanel,panel6,panel7,panel0;
+	   private JFrame frame ,frame2,Frame3,Frame4, framedestination,frame3,frame4,frame5,frame6,frame7,frame0;
 	
 		 private JLabel name,lastname,phonenumber,destinationlabel,numberofpeoplelabel,arrivaldatelabel,daysofstaylabel,Packages,packagelabel,carlabel,prizelabel,datalabel,label;
 		private  JTextField userText,nameText,lastnameText,phonenumberText,numberofpeopletext,arrivaldatetext,daysofstaytext;
-		private  JButton next_button,post_button,next_button_2,next_button_3,next_button_4,back_button,next_button_5, next_button_6,next_button_7,  next_button_8;
+		private  JButton next_button,post_button,next_button_2,next_button_3,next_button_4,back_button,next_button_5, next_button_6,next_button_7,  next_button_8,next_button_9,next_button_0,showdata_button;
 		private JTextArea textArea_price,textArea_data;
 		
 		
@@ -51,62 +51,112 @@ import javax.swing.JPanel;
 			
 		        
 	   //Δημιουργία αρχικού παραθύρου  
-			  panel= new JPanel();
-				 frame = new JFrame();
-				frame.setSize(350,400);
-				frame.setTitle("Μενού Στοιχείων Κράτησης");
-				frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-			     frame.add(panel);
-				panel.setLayout(null);
+			  panel0= new JPanel();
+				 frame0 = new JFrame();
+				frame0.setSize(300,300);
+				frame0.setTitle("AΡΧΙΚΗ");
+				frame0.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			     frame0.add(panel0);
+				panel0.setLayout(null);
 				
 		 
-			
-	  //Δημιουργία πλαίσιο κειμένου που θα εισάγουμε τα στοιχεια του χρηστη
-				name = new JLabel("'Ονομα :");
-				name.setBounds(20,20,165,25);
-     			panel.add(name);
-			 nameText =new JTextField("Please enter your name...");
-				nameText.setBounds(100,20,190,25);
-				panel.add(nameText);
-				
-				lastname = new JLabel("Eπίθετο :");
-				lastname.setBounds(20,100,165,25);
-     			panel.add(lastname);
-     			lastnameText =new JTextField("Please enter your lastname..");
-     			lastnameText.setBounds(100,100,190,25);
-				panel.add(lastnameText);
-				
-				phonenumber = new JLabel("Tηλέφωνο :");
-				phonenumber.setBounds(15,180,165,25);
-     			panel.add(phonenumber);
-     			phonenumberText =new JTextField("Please enter your phonenumber..");
-     			phonenumberText.setBounds(100,180,190,25);
-				panel.add(phonenumberText);
-				
-				
-	   //Δημιουργία  κουμπιού το οποίο θα εμφανίσει το επόμενο παράθυρο
-				next_button = new JButton("Συνέχεια");
-				next_button.setBounds(180,320,130,25);
-				panel.add(next_button);
-				frame.setVisible(true);
+		
+
+				next_button_0 = new JButton("Συνέχεια");
+				next_button_0.setBounds(80,100,130,25);
+				panel0.add(next_button_0);
+				frame0.setVisible(true);
 					
-			
+				showdata_button = new JButton("Show data");
+				showdata_button.setBounds(80,150,130,25);
+				panel0.add(showdata_button);
+				frame0.setVisible(true);
+					
+				ButtonListener0 listener0 = new ButtonListener0();
+				next_button_0.addActionListener(listener0);
+				
 	  //Δημιουργία  κουμπιού το οποίο θα εμφανίσει επομενο παραθυρο  	
-				ButtonListener listener = new ButtonListener();
-				next_button.addActionListener(listener);
+				ButtonListeners listeners = new ButtonListeners();
+				showdata_button.addActionListener(listeners);
 				
 				
 				
+				
+			
 		       
 		       
 			 
 		 }
+		
+		 class ButtonListeners implements ActionListener {
 
+		        @Override
+		        public void actionPerformed(ActionEvent e) {
+		        	
+		           
+					
+		        }
+		    }
+		class ButtonListener0 implements ActionListener {
+
+	        @Override
+	        public void actionPerformed(ActionEvent e) {
+	        	frame0.setVisible(false);
+	        	//Δημιουργία πλαίσιο κειμένου που θα εισάγουμε τα στοιχεια του χρηστη
+	        	panel= new JPanel();
+                frame = new JFrame();
+               frame.setSize(350,400);
+               frame.setTitle("Μενού Στοιχείων Κράτησης");
+               frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                frame.add(panel);
+               panel.setLayout(null);
+
+
+
+               
+        	   //Δημιουργία αρχικού παραθύρου 
+               name = new JLabel("'Ονομα :");
+               name.setBounds(20,20,165,25);
+                panel.add(name);
+            nameText =new JTextField("Please enter your name...");
+               nameText.setBounds(100,20,190,25);
+               panel.add(nameText);
+
+               lastname = new JLabel("Eπίθετο :");
+               lastname.setBounds(20,100,165,25);
+                panel.add(lastname);
+                lastnameText =new JTextField("Please enter your lastname..");
+                lastnameText.setBounds(100,100,190,25);
+               panel.add(lastnameText);
+
+               phonenumber = new JLabel("Tηλέφωνο :");
+               phonenumber.setBounds(15,180,165,25);
+                panel.add(phonenumber);
+                phonenumberText =new JTextField("Please enter your phonenumber..");
+                phonenumberText.setBounds(100,180,190,25);
+               panel.add(phonenumberText);
+
+
+      //Δημιουργία  κουμπιού το οποίο θα εμφανίσει το επόμενο παράθυρο
+               next_button = new JButton("Συνέχεια");
+               next_button.setBounds(180,320,130,25);
+               panel.add(next_button);
+               frame.setVisible(true);
+
+
+     //Δημιουργία  κουμπιού το οποίο θα εμφανίσει επομενο παραθυρο
+               ButtonListener listener = new ButtonListener();
+               next_button.addActionListener(listener);
+	           
+				
+	        }
+	    }
 	 //κλάση ανταπόκρισης του κουμπιού -user_page_button-
 		class ButtonListener implements ActionListener {
 
 	        @Override
 	        public void actionPerformed(ActionEvent arg0) {
+	        	 
 	            String name = nameText.getText();
 	            String lastname = lastnameText.getText();
 	            frame.setVisible(false);
@@ -502,10 +552,15 @@ import javax.swing.JPanel;
 					
 				next_button_8 = new JButton("ΤΕΛΟΣ");
                 panel7.add(next_button_8);
-                next_button_8.setBounds(180,320,130,25);
+                next_button_8.setBounds(180,250,130,25);
 	  //Δημιουργία  κουμπιού το οποίο θα εμφανίσει επομενο παραθυρο  	
 				ButtonListener8 listener8 = new ButtonListener8();
 				next_button_8.addActionListener(listener8);
+				next_button_9 = new JButton("AΡΧΙΚΗ");
+                panel7.add(next_button_9);
+                next_button_9.setBounds(50,250,130,25);
+                ButtonListener9 listener9 = new ButtonListener9();
+				next_button_9.addActionListener(listener9);
 				
 	           
 				
@@ -516,6 +571,16 @@ import javax.swing.JPanel;
 	        @Override
 	        public void actionPerformed(ActionEvent e) {
 	        	frame7.setVisible(false);
+	           
+				
+	        }
+	    }
+	    class ButtonListener9 implements ActionListener {
+
+	        @Override
+	        public void actionPerformed(ActionEvent e) {
+	        	frame7.setVisible(false);
+	        	frame0.setVisible(true);
 	           
 				
 	        }
