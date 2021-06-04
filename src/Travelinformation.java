@@ -28,6 +28,10 @@ public boolean  ValidDate() {
    {
 	   return numberofpeople;
    }
+   public String   getdestination()
+   {
+	   return destination;
+   }
    public String   getarrivaldate()
    {
 	   return  arrivaldate;

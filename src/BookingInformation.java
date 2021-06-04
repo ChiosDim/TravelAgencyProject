@@ -9,9 +9,17 @@ public class BookingInformation {
 	 public BookingInformation ( User user ,Travelinformation  travelInfo ,EconomyPackage   apackage)
 	 {
 		 this.user=user;
-		 this. travelInfo= travelInfo;
+		 this.travelInfo=travelInfo;
 		 this.apackage=apackage;
 	 }
+
+
+	public Travelinformation getTravelInfo() {
+		return travelInfo;
+	}
+
+
+	
 	 
 	 
 }

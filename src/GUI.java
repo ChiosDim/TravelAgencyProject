@@ -24,13 +24,13 @@ import javax.swing.JPanel;
 	import java.util.*;
 
 	public class GUI extends JFrame {
-	   private JPanel panel,panel2,Panel3,Panel4,paneldestination,panel3,panel4,panelpackage,panel5,carpanel,panel6,panel7,panel0;
-	   private JFrame frame ,frame2,Frame3,Frame4, framedestination,frame3,frame4,frame5,frame6,frame7,frame0;
+	   private JPanel panel,panel2,Panel3,Panel4,paneldestination,panel3,panel4,panelpackage,panel5,carpanel,panel6,panel7,panel0,panelsh;
+	   private JFrame frame ,frame2,Frame3,Frame4, framedestination,frame3,frame4,frame5,frame6,frame7,frame0, framesh;
 	
 		 private JLabel name,lastname,phonenumber,destinationlabel,numberofpeoplelabel,arrivaldatelabel,daysofstaylabel,Packages,packagelabel,carlabel,prizelabel,datalabel,label;
 		private  JTextField userText,nameText,lastnameText,phonenumberText,numberofpeopletext,arrivaldatetext,daysofstaytext;
-		private  JButton next_button,post_button,next_button_2,next_button_3,next_button_4,back_button,next_button_5, next_button_6,next_button_7,  next_button_8,next_button_9,next_button_0,showdata_button;
-		private JTextArea textArea_price,textArea_data;
+		private  JButton next_button,post_button,next_button_2,next_button_3,next_button_4,back_button,next_button_5, next_button_6,next_button_7,  next_button_8,next_button_9,next_button_0,showdata_button,	next_button_sh;
+		private JTextArea textArea_price,textArea_data,textArea_sh;
 		
 		
 		private JList<String> listView, listView2,listView3;
@@ -43,6 +43,8 @@ import javax.swing.JPanel;
 		 private Travelinformation t;
 		 private User USER;
 		 private EconomyPackage PACKAGE;
+		 ArrayList<BookingInformation> BIlist = new ArrayList<>();
+		
 		 
 		public GUI( ArrayList<EconomyPackage> packages)
 		 {
@@ -92,6 +94,83 @@ import javax.swing.JPanel;
 
 		        @Override
 		        public void actionPerformed(ActionEvent e) {
+		        	
+		        	frame0.setVisible(false);
+		        	panelsh= new JPanel();
+					 framesh = new JFrame();
+					 framesh.setSize(400,400);
+					 framesh.setTitle("ƒ≈ƒœÃ≈Õ¡");
+					 framesh.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+					 framesh.add(panelsh);
+					 panelsh.setLayout(null);
+					 
+					 label = new JLabel("”‘¡‘…”‘… ¡ :");
+						label.setBounds(20,20,165,25);
+						panelsh.add(label);
+		   			textArea_sh= new JTextArea();
+		            textArea_sh.setBounds(150, 20, 200, 150);
+		          
+		           double athenspr=0;
+		          double  cretepr=0;
+		          double rodespr=0;
+		          double patrapr=0;
+		          double athenspl=0;
+		          double  cretepl=0;
+		          double rodespl=0;
+		          double  patrapl=0;
+		          double total=0;
+		          for(BookingInformation b: BIlist) {
+		        	  if(b.getTravelInfo().getdestination()=="¡ËﬁÌ·(50 ÂıÒ˛)") {
+		        		  athenspl++;
+		        		  
+		        	  }
+		        	  if(b.getTravelInfo().getdestination()==" ÒﬁÙÁ(100 ÂıÒ˛)") {
+		        		  cretepl++;
+		        	  }
+                     if(b.getTravelInfo(). getdestination()=="—¸‰ÔÚ(80 ÂıÒ˛)") {
+                    	 rodespl++;
+		        	  }
+                     if(b.getTravelInfo().getdestination()=="–‹ÙÒ·(60 ÂıÒ˛)") {
+                    	 patrapl++;
+		        	  }
+		          }
+		          total=athenspl+cretepl+rodespl+patrapl;
+		          if(total!=0) {
+		          athenspr=athenspl*(100/total);
+		          cretepr=cretepl*(100/total);
+		          rodespr=rodespl*(100/total);
+		          patrapr= patrapl*(100/total);}
+		          
+		           
+		           
+		            
+		            textArea_sh.append("–—œœ—…”Ãœ…" +"\n"+"¡Ë«Õ¡:"+athenspr+"%"+"\n"+" —«‘«:"+cretepr+"%"+"\n"+"—œƒœ”:"+rodespr+"%"+"\n"+"–¡‘—¡:"+ patrapr+"%");
+		            panelsh.add(textArea_sh);
+		           
+		            
+		            textArea_sh.setEditable(false);
+					
+			 
+			
+
+					next_button_sh = new JButton("–…”Ÿ");
+					next_button_sh.setBounds(80,300,130,25);
+					panelsh.add(next_button_sh);
+					 framesh.setVisible(true);
+						
+					
+						
+					 ButtonListene listene = new ButtonListene();
+					next_button_sh.addActionListener(listene);
+					
+		        }
+		    }
+		 class ButtonListene implements ActionListener {
+
+		        @Override
+		        public void actionPerformed(ActionEvent e) {
+		        	framesh.setVisible(false);
+		        	 frame0.setVisible(true);
 		        	
 		           
 					
@@ -524,6 +603,8 @@ import javax.swing.JPanel;
 	        	
 	        	
 	           BookingInformation bi= new  BookingInformation(USER,t,PACKAGE );
+	           BIlist.add(bi);
+	           
 	          
 	           panel7= new JPanel();
 				 frame7 = new JFrame();
