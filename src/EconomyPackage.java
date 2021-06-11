@@ -22,9 +22,11 @@ public class EconomyPackage {
 		   return price;
 	   }
 	
+	 //Μέθοδος υπολογισμού τιμής
 	public void CalculatePrice(Travelinformation t)
 	{
 		double totalprice;
+		
 		
 		
 		if(car==true) {

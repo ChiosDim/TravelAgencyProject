@@ -63,12 +63,13 @@ import javax.swing.JPanel;
 				
 		 
 		
-
+		//Δημιουργία  κουμπιού το οποίο θα εμφανίσει επομενο παραθυρο  
 				next_button_0 = new JButton("Συνέχεια");
 				next_button_0.setBounds(80,100,130,25);
 				panel0.add(next_button_0);
 				frame0.setVisible(true);
-					
+			
+		//Δημιουργία  κουμπιού το οποίο θα εμφανίσει τα δεδομένα  
 				showdata_button = new JButton("Show data");
 				showdata_button.setBounds(80,150,130,25);
 				panel0.add(showdata_button);
@@ -77,7 +78,7 @@ import javax.swing.JPanel;
 				ButtonListener0 listener0 = new ButtonListener0();
 				next_button_0.addActionListener(listener0);
 				
-	  //Δημιουργία  κουμπιού το οποίο θα εμφανίσει επομενο παραθυρο  	
+	  	
 				ButtonListeners listeners = new ButtonListeners();
 				showdata_button.addActionListener(listeners);
 				
@@ -89,6 +90,8 @@ import javax.swing.JPanel;
 		       
 			 
 		 }
+		
+		//Κλάση ανταπόκρισης του κουμπιού(showdata_button)
 		
 		 class ButtonListeners implements ActionListener {
 
@@ -110,7 +113,9 @@ import javax.swing.JPanel;
 		   			textArea_sh= new JTextArea();
 		            textArea_sh.setBounds(150, 20, 200, 150);
 		          
-		           double athenspr=0;
+		          //Διαδικασία δημιουργίας στατιστικών
+		            
+		          double athenspr=0;
 		          double  cretepr=0;
 		          double rodespr=0;
 		          double patrapr=0;
@@ -142,7 +147,7 @@ import javax.swing.JPanel;
 		          patrapr= patrapl*(100/total);}
 		          
 		           
-		           
+		          //Εμφάνιση στατιστικών 
 		            
 		            textArea_sh.append("ΠΡΟΟΡΙΣΜΟΙ" +"\n"+"ΑθΗΝΑ:"+athenspr+"%"+"\n"+"ΚΡΗΤΗ:"+cretepr+"%"+"\n"+"ΡΟΔΟΣ:"+rodespr+"%"+"\n"+"ΠΑΤΡΑ:"+ patrapr+"%");
 		            panelsh.add(textArea_sh);
@@ -151,7 +156,7 @@ import javax.swing.JPanel;
 		            textArea_sh.setEditable(false);
 					
 			 
-			
+		          //Δημιουργία  κουμπιού το οποίο θα εμφανίσει το κουμπί που θα πάει πίσω
 
 					next_button_sh = new JButton("ΠΙΣΩ");
 					next_button_sh.setBounds(80,300,130,25);
@@ -165,6 +170,9 @@ import javax.swing.JPanel;
 					
 		        }
 		    }
+		 
+		//Κλάση ανταπόκρισης του κουμπιού(next_button_sh)
+		 
 		 class ButtonListene implements ActionListener {
 
 		        @Override
@@ -176,12 +184,13 @@ import javax.swing.JPanel;
 					
 		        }
 		    }
+		//Κλάση ανταπόκρισης του κουμπιού(next_button_0)
 		class ButtonListener0 implements ActionListener {
 
 	        @Override
 	        public void actionPerformed(ActionEvent e) {
 	        	frame0.setVisible(false);
-	        	//Δημιουργία πλαίσιο κειμένου που θα εισάγουμε τα στοιχεια του χρηστη
+	 
 	        	panel= new JPanel();
                 frame = new JFrame();
                frame.setSize(350,400);
@@ -230,7 +239,7 @@ import javax.swing.JPanel;
 				
 	        }
 	    }
-	 //κλάση ανταπόκρισης του κουμπιού -user_page_button-
+	 //κλάση ανταπόκρισης του κουμπιού (next_button)
 		class ButtonListener implements ActionListener {
 
 	        @Override
@@ -241,12 +250,13 @@ import javax.swing.JPanel;
 	            frame.setVisible(false);
 	          
 	           long phonenumber = Integer.parseInt(phonenumberText.getText());
+	           //Δημιουργία αντικειμένου τύπου User
 	           User user = new User(name,lastname,phonenumber);
-	          USER=user;
+	           USER=user;
 	           frame2 = new JFrame();
 	           panel2= new JPanel();
 	           paneldestination= new JPanel();
-				 
+				//Δημιουργία λίστας 
 				 listView = new JList<String>();
 				 model = new DefaultListModel<String>();
 				 
@@ -313,7 +323,7 @@ import javax.swing.JPanel;
 	            
 	    
 
-	  //κλάση ανταπόκρισης του κουμπιού -ΟΚ-
+	  //κλάση ανταπόκρισης του κουμπιού (next_button_2)
 	  		class ButtonListener2 implements ActionListener {
 	  			
 	  	        @Override
@@ -382,7 +392,7 @@ import javax.swing.JPanel;
 	  		
 	  		
 
-	//κλάση ανταπόκρισης του κουμπιού -infection_button-
+	//κλάση ανταπόκρισης του κουμπιού (next_button_3)
 		class ButtonListener3 implements ActionListener {
 
 	        @Override
@@ -390,9 +400,11 @@ import javax.swing.JPanel;
 	        	int daysofstay = Integer.parseInt(daysofstaytext.getText());
 	        	String arrivaldate = arrivaldatetext.getText();
 	        	int numberofpeo = Integer.parseInt(numberofpeopletext.getText());
+	        	//Δημιουργία αντικειμένου Travelinformation
 	        	Travelinformation travelinformation = new Travelinformation(Selecteddestination,daysofstay,arrivaldate,numberofpeo );
 	        	
 	        	travelinformation.DestinationPrice();
+	        	//Έλεγχος εγκυρότητας ημερών
 	        	if( travelinformation.ValidDate()) {
 	        		travelinformation.GetdestinationPrice();
 	        		frame3.setVisible(false);
@@ -400,7 +412,8 @@ import javax.swing.JPanel;
 					 frame4 = new JFrame();
 
 						frame4.setSize(300,250);
-					     frame4.add(panel4);		
+					     frame4.add(panel4);
+					     //Δημιουργία λίστας
 		     			 listView2 = new JList<String>();
 						 model2 = new DefaultListModel<String>();
 						 panelpackage= new JPanel();
@@ -464,7 +477,7 @@ import javax.swing.JPanel;
 	    
 		
 		
-		//κλάση ανταπόκρισης του κουμπιού -BackLoginButton-
+		//κλάση ανταπόκρισης του κουμπιού (back_button)
 	    class ButtonListener4 implements ActionListener {
 
 	        @Override
@@ -477,7 +490,7 @@ import javax.swing.JPanel;
 	
 	    
 	    
-	  //κλάση ανταπόκρισης του κουμπιού -back_login_button2-
+	  //κλάση ανταπόκρισης του κουμπιού (next_button_4)
 	    class ButtonListener5 implements ActionListener {
 
 	        @Override
@@ -490,7 +503,7 @@ import javax.swing.JPanel;
 				frame5.setTitle("Μενού Ενοικίασης Αυτοκινήτου");
 				
 			     frame5.add(panel5);
-				
+				//Δημιουργία λίστας
 				 listView3 = new JList<String>();
 				 model3 = new DefaultListModel<String>();
 				 
@@ -526,7 +539,7 @@ import javax.swing.JPanel;
 	    
 	    
 	    
-	  //κλάση ανταπόκρισης του κουμπιού -post_button-
+	  //κλάση ανταπόκρισης του κουμπιού (next_button_5)
 	    class ButtonListener6 implements ActionListener {
 
 	        @Override
@@ -535,7 +548,7 @@ import javax.swing.JPanel;
 	        	Selectedpackage=selectedpackage;
 	        	String selectedcar = listView3.getSelectedValue();
 	        	Selectedcar=selectedcar;
-	        	
+	        	//Δημιουργία αντικείμενου τύπου EconomyPackage
 	        	EconomyPackage  Package = null;
 	        	
 	        		for(EconomyPackage P: packages ) {
@@ -570,6 +583,7 @@ import javax.swing.JPanel;
 	 				frame6.setSize(350,300);
 	 				frame6.setTitle("Tελικό ποσό κράτησης");
 	 				prizelabel = new JLabel("Τελικό ποσό πληρωμής:");
+	 				//Εμφάνιση τιμής
 	 				textArea_price = new JTextArea();
                     textArea_price.setBounds(11, 4, 431, 189);
                     textArea_price.append(String.valueOf(Package.Gettotalprice())+"€");
@@ -595,13 +609,14 @@ import javax.swing.JPanel;
 	        	
 	        		}
 	       }
+	  //κλάση ανταπόκρισης του κουμπιού (next_button_7)
 	    class ButtonListener7 implements ActionListener {
 
 	        @Override
 	        public void actionPerformed(ActionEvent e) {
 	        	frame6.setVisible(false);
 	        	
-	        	
+	        //Δημιουρία αντικειμένου BookingInformation
 	           BookingInformation bi= new  BookingInformation(USER,t,PACKAGE );
 	           BIlist.add(bi);
 	           
@@ -647,6 +662,7 @@ import javax.swing.JPanel;
 				
 	        }
 	    }
+	  //κλάση ανταπόκρισης του κουμπιού (next_button_8)
 	    class ButtonListener8 implements ActionListener {
 
 	        @Override
