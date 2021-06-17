@@ -6,7 +6,7 @@ import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 	import java.awt.event.ActionListener;
 
-import javax.sound.sampled.Line;
+
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.DefaultListModel;
@@ -16,20 +16,20 @@ import javax.swing.DefaultListModel;
 	import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-	import javax.swing.JScrollPane;
+	
 	import javax.swing.JTextArea;
 	import javax.swing.JTextField;
-	import javax.swing.ScrollPaneConstants;
+	
 
 	import java.util.*;
 
 	public class GUI extends JFrame {
-	   private JPanel panel,panel2,Panel3,Panel4,paneldestination,panel3,panel4,panelpackage,panel5,carpanel,panel6,panel7,panel0,panelsh;
-	   private JFrame frame ,frame2,Frame3,Frame4, framedestination,frame3,frame4,frame5,frame6,frame7,frame0, framesh;
+	   private JPanel panel,panel2,paneldestination,panel3,panel4,panelpackage,panel5,carpanel,panel6,panel7,panel0,panelsh;
+	   private JFrame frame ,frame2, frame3,frame4,frame5,frame6,frame7,frame0, framesh;
 	
-		 private JLabel name,lastname,phonenumber,destinationlabel,numberofpeoplelabel,arrivaldatelabel,daysofstaylabel,Packages,packagelabel,carlabel,prizelabel,datalabel,label;
-		private  JTextField userText,nameText,lastnameText,phonenumberText,numberofpeopletext,arrivaldatetext,daysofstaytext;
-		private  JButton next_button,post_button,next_button_2,next_button_3,next_button_4,back_button,next_button_5, next_button_6,next_button_7,  next_button_8,next_button_9,next_button_0,showdata_button,	next_button_sh;
+		 private JLabel name,lastname,phonenumber,destinationlabel,numberofpeoplelabel,arrivaldatelabel,daysofstaylabel,packagelabel,carlabel,prizelabel,label;
+		private  JTextField nameText,lastnameText,phonenumberText,numberofpeopletext,arrivaldatetext,daysofstaytext;
+		private  JButton next_button,next_button_2,next_button_3,next_button_4,back_button,next_button_5,next_button_7,  next_button_8,next_button_9,next_button_0,showdata_button,next_button_sh;
 		private JTextArea textArea_price,textArea_data,textArea_sh;
 		
 		

@@ -44,7 +44,7 @@ public boolean  ValidDate() {
    }
   
    public void DestinationPrice() {
-	    //destinationprice=5;
+	  
 	   if(destination.equals("Αθήνα(50 ευρώ)"))
 		   this.destinationPrice=50;
 	   else if (destination.equals("Πάτρα(60 ευρώ)"))
