@@ -249,7 +249,7 @@ import javax.swing.JPanel;
 	            String lastname = lastnameText.getText();
 	            frame.setVisible(false);
 	          
-	           long phonenumber = Integer.parseInt(phonenumberText.getText());
+	           long phonenumber = Long.parseLong(phonenumberText.getText());
 	           //Δημιουργία αντικειμένου τύπου User
 	           User user = new User(name,lastname,phonenumber);
 	           USER=user;
